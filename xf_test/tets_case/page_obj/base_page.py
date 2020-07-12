@@ -59,16 +59,11 @@ class BasePage(object):
         :param loc:
         :return:
         """
-        # try:
-        #     WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(loc))
-        #     return self.driver.find_elements(*loc)
-        # except BaseException as f:
-        #     print("错误{0}\n元素未找到{1}".format(f, loc))
         return self.driver.find_elements(*loc)
 
     def script(self, src):
         """
-        用于js代码的编写
+        js代码编写
         :param src:
         :return:
         """

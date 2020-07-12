@@ -69,15 +69,6 @@ if __name__ == '__main__':
     unittest.main(verbosity=2)
 
 
-# from selenium import webdriver
-# import time
-#
-# driver = webdriver.Chrome()
-# driver.get('http://localhost:8000/')
-# driver.maximize_window()
-# time.sleep(2)
-# driver.quit()
-
 
 
 
