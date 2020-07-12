@@ -28,7 +28,7 @@ import unittest
 #     return file_new
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # 运行是是是
     # filename = './xf_test/report/report/' + now_time() + 'result.html'  # 相对路径
     filename = 'F:\\xf_py\\conner\\learning_log\\xf_test\\report\\report\\' + now_time() + 'result.html'  # 绝对路径
     fp = open(filename, 'wb')
