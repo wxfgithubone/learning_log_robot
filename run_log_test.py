@@ -4,8 +4,8 @@ import unittest
 
 
 if __name__ == '__main__':
-    # filename = './xf_test/report/report/' + now_time() + 'result.html'  # 相对路径
-    filename = 'F:\\xf_py\\conner\\learning_log\\xf_test\\report\\report\\' + now_time() + 'result.html'  # 绝对路径
+    # filename = './xf_test/report/report/' + now_time() + 'result.html'  # 相对路径(移植性高)
+    filename = 'F:\\xf_py\\conner\\learning_log\\xf_test\\report\\report\\' + now_time() + 'result.html'  # 绝对路径（不易出错）
     fp = open(filename, 'wb')
     runner = HTMLTestRunner(stream=fp,
                             verbosity=2,
