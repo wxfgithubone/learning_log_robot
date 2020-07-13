@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from xf_test.tets_case.page_obj.base_page import BasePage
 from xf_test.tets_case.models.driver import driver_browser
 from xf_test.tets_case.models.function import save_img
-from time import sleep
+from time import sleep as s
 
 
 class LoginPage(BasePage):
@@ -16,7 +16,6 @@ class LoginPage(BasePage):
     def log_click_login(self):
         """
         点击登陆
-        :return:
         """
         self.find_element(*self.log_click_login_loc).click()
 
@@ -27,23 +26,18 @@ class LoginPage(BasePage):
     def login_username(self, username):
         """
         登录用户名
-        :param username:
-        :return:
         """
         self.find_element(*self.login_username_loc).send_keys(username)
 
     def login_password(self, password):
         """
         登录密码
-        :param password:用户输入密码
-        :return:None
         """
         self.find_element(*self.login_password_loc).send_keys(password)
 
     def login_button(self):
         """
         登录按钮
-        :return:None
         """
         self.find_element(*self.login_button_loc).click()
 
@@ -59,7 +53,7 @@ class LoginPage(BasePage):
         self.login_username(username)
         self.login_password(password)
         self.login_button()
-        sleep(1)
+        s(1)
 
     user_error_hint_loc = (By.XPATH, '/html/body/div/div[2]/form/div[1]/text()')
     user_login_success_loc = (By.ID, "xfcust_Name")
@@ -67,14 +61,12 @@ class LoginPage(BasePage):
     def user_error_login_hint(self):
         """
         用户登录错误提示
-        :return:
         """
         return self.find_element(*self.user_error_hint_loc).text
 
     def user_login_success(self):
         """
         登录成功的用户名
-        :return:
         """
         return self.find_element(*self.user_login_success_loc).text
 
@@ -83,7 +75,7 @@ if __name__ == '__main__':
     driver = driver_browser()
     LoginPage(selenium_driver=driver).user_login()
     save_img(driver, 'log_index.png')
-    sleep(1)
+    s(1)
     driver.quit()
 
 
