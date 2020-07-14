@@ -1,6 +1,4 @@
-import os
-import time
-import smtplib
+import os, time, smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 from xf_test.tets_case.models.driver import driver_browser
@@ -8,10 +6,7 @@ from xf_test.tets_case.models.driver import driver_browser
 
 def save_img(driver, img_name):
     """
-    截图函数
-    :param driver:
-    :param img_name:
-    :return:
+    截图
     """
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     now = time.strftime("%Y %m %d_%H %M %S_", time.localtime(time.time()))
@@ -20,9 +15,7 @@ def save_img(driver, img_name):
 
 def send_emil(new_file):
     """
-    发送邮件函数
-    :param new_file:
-    :return:
+    发送邮件
     """
     f = open(new_file, "rb")
     mail_body = f.read()
@@ -42,9 +35,7 @@ def send_emil(new_file):
 
 def new_report(test_report):
     """
-    查找最新文件函数
-    :param test_report:
-    :return:
+    查找最新文件
     """
     lists = os.listdir(test_report)
     lists.sort(key=lambda fn: os.path.getatime(test_report + "\\" + fn))
@@ -55,15 +46,16 @@ def new_report(test_report):
 
 def now_time():
     """
-    获取当前时间函数
-    :return:
+    获取当前时间
     """
     now = time.strftime("%Y_%m_%d %H-%M-%S ")
     return now
 
 
-# 读取excel函数
 def read_excel():
+    """
+    读取excel
+    """
     pass
 
 
