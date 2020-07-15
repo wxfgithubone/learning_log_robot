@@ -23,7 +23,7 @@ def send_emil(new_file):
     receiver = "652894729@qq.com"
     smtp_server = "smtp.qq.com"
     username = "1845719332@qq.com"
-    password = "fqijzfeesegjbjbd"
+    password = "令牌密码"
     msg = MIMEText(mail_body, 'html', 'utf-8')
     msg['Subject'] = Header('自动化测试报告', 'utf-8')
     smtp = smtplib.SMTP_SSL(smtp_server, 465)
