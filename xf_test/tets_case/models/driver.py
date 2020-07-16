@@ -8,7 +8,7 @@ def driver_browser():
     warnings.simplefilter("ignore", ResourceWarning)  # 消除警告
     lists = {
         'http://127.0.0.1:5555/wd/hub': 'firefox',
-        'http://127.0.0.1:5556/wd/hub': 'chrome',
+        # 'http://127.0.0.1:5556/wd/hub': 'chrome',
     }
     for host, browser in lists.items():
         # print(host, browser)
