@@ -9,7 +9,7 @@ class LoginPage(BasePage):
     """
     登录页面
     """
-    url = '/'
+    url = '/users/login/'
     # Action
     log_click_login_loc = (By.ID, 'user_login')
 
@@ -56,7 +56,7 @@ class LoginPage(BasePage):
         s(1)
 
     user_error_hint_loc = (By.XPATH, '/html/body/div/div[2]/form/div[1]/text()')
-    user_login_success_loc = (By.ID, "xfcust_Name")
+    user_login_success_loc = (By.ID, "wxf_logs_Name")
 
     def user_error_login_hint(self):
         """
@@ -75,11 +75,4 @@ if __name__ == '__main__':
     driver = driver_browser()
     LoginPage(selenium_driver=driver).user_login()
     save_img(driver, 'log_index.png')
-    s(1)
     driver.quit()
-
-
-
-
-
-
