@@ -1,4 +1,4 @@
-from xf_test.tets_case.models.function import send_emil, new_report, now_time
+from xf_test.tets_case.models.function import WriteReport, now_time
 from HTMLTestRunner import HTMLTestRunner
 import unittest
 
@@ -22,8 +22,9 @@ if __name__ == '__main__':
         print("用例已全部加载完成！")
 
     fp.close()
-    file_path = new_report('F:\\xf_py\\conner\\learning_log\\xf_test\\report\\report\\')  # ./xf_test/report/report/
-    send_emil(file_path)
+    op = WriteReport('F:\\xf_py\\conner\\learning_log\\xf_test\\report\\report\\')
+    file_path = op.new_report()  # ./xf_test/report/report/
+    op.send_emil(file_path)
 
 
 # print(sys.path)

@@ -1,3 +1,7 @@
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+
 class BasePage(object):
     """
     页面基础类，用于所有页面的继承
@@ -37,18 +41,21 @@ class BasePage(object):
         定位单个元素
         *loc任意数量的位置参数（带单个星号参数）
         """
-        # try:
-        #     WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(loc))
-        #     return self.driver.find_element(*loc)
-        # except BaseException as f:
-        #     print("错误{0}\n元素未找到{1}".format(f, loc))
-        return self.driver.find_element(*loc)
+        try:
+            WebDriverWait(self.driver, 10, 0.5).until(EC.visibility_of_element_located(loc))
+            return self.driver.find_element(*loc)
+        except BaseException as f:
+            print("错误{0}\n元素未找到{1}".format(f, loc))
 
     def find_elements(self, *loc):
         """
         定位一组元素
         """
-        return self.driver.find_elements(*loc)
+        try:
+            WebDriverWait(self.driver, 10, 0.5).until(EC.visibility_of_any_elements_located(loc))
+            return self.driver.find_elements(*loc)
+        except BaseException as f:
+            print("错误{0}\n元素未找到{1}".format(f, loc))
 
     def script(self, src):
         """
@@ -56,8 +63,5 @@ class BasePage(object):
         """
         return self.driver.execute_script(src)
 
-
-
-
-
-
+    def get_cookie(self):
+        pass
