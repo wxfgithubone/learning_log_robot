@@ -47,14 +47,14 @@ def excel_by_index(file, by_index):  # 按表的索引读取
     lists = []  # 创建一个空列表
     for x in range(1, nrows):      # 第一行为标题（第一行为0），所以从第二行开始
         row = tab.row_values(x)
-        # print("\033[31m外层循环：\033[0m %s" % x)
+        print("\033[31m外层行循环：\033[0m %s" % x)
         if row:
             app = {}  # 创建空字典
             for y in range(ncols):
-                # print(y)
+                print("\033[33m内存列循环：\033[0m %s" % y)
                 app[colName[y]] = row[y]
-                # print("标题行：%s" % colName[y])
-                # print("参数值：%s" % row[y])
+                print("标题行：%s" % colName[y])
+                print("参数值：%s" % row[y])
                 # print(app)
             lists.append(app)
     return lists
