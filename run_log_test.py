@@ -27,7 +27,7 @@ if __name__ == '__main__':
     op.send_emil(file_path)
 
 
-# print(sys.path)
+# print(sys.path)、
 
 
 
