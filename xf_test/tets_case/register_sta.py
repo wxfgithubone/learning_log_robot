@@ -24,20 +24,20 @@ class RegisterTest(MyTest):
             find_name = RegisterPage(self.driver).user_register_success()
             self.assertEqual(find_name, 'Hello - {0} !'.format(arg['username']))
             save_img(self.driver, 'register_success.png')
-            try:
-                query = "SELECT * FROM auth_user WHERE username='{0}'".format(arg['username'])
-                user = get_mysql(sql=query)
-                if user:
-                    print("用户 - {0} - 注册成功，已在数据库中查询到！".format(arg['username']))
-                else:
-                    print("用户 - {0} - 未找到！！！".format(arg['username']))
-            except Exception as e:
-                print("数据库查询异常：%s" % e)
         except BaseException as f:
             print("register1执行失败：%s" % f)
             save_img(self.driver, 'register_error.png')
         else:
             print(arg['username'] + "  - 注册时间：%s" % now_time())
+        try:
+            query = "SELECT * FROM auth_user WHERE username='{0}'".format(arg['username'])
+            user = get_mysql(sql=query)
+            if user:
+                print("用户 - {0} - 注册成功，已在数据库中查询到！".format(arg['username']))
+            else:
+                print("用户 - {0} - 未找到！！！".format(arg['username']))
+        except Exception as e:
+            print("数据库查询异常：%s" % e)
         finally:
             pass
 
