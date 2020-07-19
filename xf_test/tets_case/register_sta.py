@@ -28,18 +28,17 @@ class RegisterTest(MyTest):
             print("register1执行失败：%s" % f)
             save_img(self.driver, 'register_error.png')
         else:
-            print(arg['username'] + "  - 注册时间：%s" % now_time())
-        try:
-            query = "SELECT * FROM auth_user WHERE username='{0}'".format(arg['username'])
-            user = get_mysql(sql=query)
-            if user:
-                print("用户 - {0} - 注册成功，已在数据库中查询到！".format(arg['username']))
-            else:
-                print("用户 - {0} - 未找到！！！".format(arg['username']))
-        except Exception as e:
-            print("数据库查询异常：%s" % e)
+            try:
+                query = "SELECT * FROM auth_user WHERE username='{0}'".format(arg['username'])
+                user = get_mysql(sql=query)
+                if user:
+                    print("用户 - {0}，已在数据库中查询到！".format(arg['username']))
+                else:
+                    print("用户 - {0} - 未找到！！！".format(arg['username']))
+            except Exception as e:
+                print("数据库连接异常：%s" % e)
         finally:
-            pass
+            print(arg['username'] + "  - 注册时间：%s" % now_time())
 
 
 if __name__ == '__main__':
