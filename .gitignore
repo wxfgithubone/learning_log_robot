@@ -1,0 +1,7 @@
+ll_env
+__pycache__/
+.idea/
+venv/
+xf_test/report/report/
+xf_test/report/image/
+xf_test/data/
