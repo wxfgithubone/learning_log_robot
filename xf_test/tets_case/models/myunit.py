@@ -1,4 +1,5 @@
 from xf_test.tets_case.models.driver import driver_browser
+from xf_test.tets_case.models.db import MyDB
 import unittest
 
 
@@ -12,6 +13,7 @@ class MyTest(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.driver.close()
+        MyDB().close_db()
 
 
 
