@@ -5,7 +5,7 @@ import unittest
 
 if __name__ == '__main__':
     # filename = './xf_test/report/report/' + now_time() + 'result.html'  # 相对路径(移植性高)
-    filename = 'F:\\xf_py\\conner\\learning_log\\xf_test\\report\\report\\' + now_time() + 'result.html'  # 绝对路径（不易出错）
+    filename = 'F:\\xf_py\\conner\\learning_log_UI\\xf_test\\report\\report\\' + now_time() + 'result.html'  # 绝对路径（不易出错）
     fp = open(filename, 'wb')
     runner = HTMLTestRunner(stream=fp,
                             verbosity=2,
@@ -14,7 +14,7 @@ if __name__ == '__main__':
                             tester='王小飞')
     try:
         discover = unittest.defaultTestLoader.\
-            discover('F:\\xf_py\\conner\\learning_log\\xf_test\\tets_case', pattern='*_sta.py')  # ./xf_test/tets_case
+            discover('F:\\xf_py\\conner\\learning_log_UI\\xf_test\\tets_case', pattern='*_sta.py')  # ./xf_test/tets_case
         runner.run(discover)
     except BaseException as f:
         print("加载用例出错：{0}".format(f))
@@ -22,12 +22,11 @@ if __name__ == '__main__':
         print("用例已全部加载完成！")
 
     fp.close()
-    op = WriteReport('F:\\xf_py\\conner\\learning_log\\xf_test\\report\\report\\')
+    op = WriteReport('F:\\xf_py\\conner\\learning_log_UI\\xf_test\\report\\report\\')
     file_path = op.new_report()  # ./xf_test/report/report/
     op.send_emil(file_path)
 
 
-# print(sys.path)、
 
 
 

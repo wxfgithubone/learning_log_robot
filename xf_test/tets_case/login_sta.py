@@ -2,7 +2,7 @@ from time import sleep
 import unittest, random
 from xf_test.tets_case.models import myunit, function
 from xf_test.tets_case.page_obj.login_page import LoginPage
-from ddt import ddt, data, unpack
+from ddt import ddt, data
 
 
 class LoginTest(myunit.MyTest):
@@ -14,6 +14,7 @@ class LoginTest(myunit.MyTest):
         """
         LoginPage(self.driver).user_login(username, password)
 
+    @unittest.skip("跳过")
     def test_login1(self):
         """用户名正确，密码错误"""
         try:
@@ -28,6 +29,7 @@ class LoginTest(myunit.MyTest):
         else:
             print("用例1登录成功！")
 
+    @unittest.skip("跳过")
     def test_login2(self):
         """用户名错误，密码正确"""
         self.user_login_verify(username='wer', password='wxf990824')
@@ -37,7 +39,7 @@ class LoginTest(myunit.MyTest):
                          '"fields may be case-sensitive.')
         function.save_img(self.driver, "user_error.png")
 
-    # @unittest.skip("跳过")
+    @unittest.skip("跳过")
     def test_login3(self):
         """用户名密码为随机"""
         use = random.choice('zxcvbnmasdfghjkl')
@@ -54,15 +56,15 @@ class LoginTest(myunit.MyTest):
     def test_login4(self):
         """用户名，密码正确"""
         try:
-            self.user_login_verify(username='www', password='wxf990824')
+            self.user_login_verify(username='王小飞', password='wxf990824')
             sleep(1)
             po = LoginPage(self.driver)
-            self.assertEqual(po.user_login_success(), 'Hello - www !')
-            function.save_img(self.driver, "user_pwd_ture.png")
+            self.assertEqual(po.user_login_success(), 'Hello - {0} !'.format('小飞'))
         except BaseException as e:
-            print("登录失败：\n{0}".format(e))
+            function.save_img(self.driver, "user_pwd_error.png")
+            raise e
         else:
-            print("\t登录成功！")
+            print("登录成功！")
 
 
 if __name__ == '__main__':
